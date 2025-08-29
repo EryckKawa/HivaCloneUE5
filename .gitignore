@@ -1,9 +1,50 @@
-# Ignorar tudo por padrão
-*
+# Arquivos gerados pela Unreal Engine
+/Binaries/
+/Build/
+/DerivedDataCache/
+/Intermediate/
+/Saved/
+/Content/
 
-# Exceto arquivos de código C++
-!Source/**/*.h
-!Source/**/*.cpp
+# Preservar arquivos C++
+!/Source/**/*.cpp
+!/Source/**/*.h
+!/Source/**/*.hpp
 
-# Ainda permitir o .gitignore
-!.gitignore
+# Arquivos de configuração do projeto
+*.uproject
+!/Config/
+
+# Arquivos específicos da IDE
+.vs/
+.idea/
+*.VC.db
+*.opensdf
+*.opendb
+*.sdf
+*.suo
+*.xcodeproj
+*.xcworkspace
+*.sln
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de packaged game
+/Packaged/
+/WindowsNoEditor/
+/LinuxNoEditor/
+/MacNoEditor/
+
+# Arquivos de crashlog
+/Crashes/
+
+# Outros arquivos gerados
+*.log
+
+# Plugins - ignorar por padrão, mas permitir código fonte C++ de plugins
+/Plugins/*
+!/Plugins/*/Source/**/*.cpp
+!/Plugins/*/Source/**/*.h
+!/Plugins/*/Source/**/*.hpp
