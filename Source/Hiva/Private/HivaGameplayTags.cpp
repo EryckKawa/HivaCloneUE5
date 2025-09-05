@@ -18,6 +18,9 @@ namespace HivaGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Attack_Light_Gloves,"Player.Ability.Attack.Light.Gloves");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Attack_Heavy_Gloves,"Player.Ability.Attack.Heavy.Gloves");
 
+	/** Enemy tags **/
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Weapon_Gloves,"Enemy.Weapon.Gloves");
+	
 	/** Test Event tags **/
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_Test,"Player.Event.Test");
 

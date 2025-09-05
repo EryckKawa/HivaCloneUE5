@@ -82,6 +82,8 @@ void AHivaPlayerCharacter::BeginPlay()
 
 void AHivaPlayerCharacter::Input_Move(const FInputActionValue& InputActionValue)
 {
+	if (!Controller) return;
+	
 	const FVector2D MovementVector = InputActionValue.Get<FVector2D>();
 
 	const FRotator MovementRotation(0.f, Controller->GetControlRotation().Yaw, 0.f);

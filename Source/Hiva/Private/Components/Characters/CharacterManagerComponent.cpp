@@ -44,20 +44,46 @@ void UCharacterManagerComponent::SwitchToCharacterByIndex(int32 Index)
 void UCharacterManagerComponent::SpawnAndPossessCharacter(TSubclassOf<AHivaPlayerCharacter> CharacterClass)
 {
 	APlayerController* PlayerController = Cast<APlayerController>(GetOwner());
-
 	if (!PlayerController) return;
 
 	FVector SpawnLocation = FVector::ZeroVector;
 	FRotator SpawnRotation = FRotator::ZeroRotator;
-	
+    
 	APawn* CurrentPlayer = PlayerController->GetPawn();
 	if (CurrentPlayer)
 	{
-		SpawnLocation = CurrentPlayer->GetActorLocation();
+		// Salve referência ao pawn atual
+		PreviousPawn = CurrentPlayer;
+        
+		PreviousLocation = CurrentPlayer->GetActorLocation();
+		PreviousRotation = CurrentPlayer->GetActorRotation(); 
+        
+		SpawnLocation = PreviousLocation;
 		SpawnRotation = PlayerController->GetControlRotation();
-		
+        
 		PlayerController->UnPossess();
-		CurrentPlayer->Destroy();
+
+		// 🔹 Torna o pawn invisível
+		CurrentPlayer->SetActorHiddenInGame(true);
+
+		// 🔹 Remove colisão
+		CurrentPlayer->SetActorEnableCollision(false);
+
+		// 🔹 Desativa input
+		CurrentPlayer->DisableInput(PlayerController);
+
+		// 🔹 Esconde todos os atores anexados
+		TArray<AActor*> AttachedActors;
+		CurrentPlayer->GetAttachedActors(AttachedActors);
+
+		for (AActor* Attached : AttachedActors)
+		{
+			if (Attached)
+			{
+				Attached->SetActorHiddenInGame(true);
+				Attached->SetActorEnableCollision(false);
+			}
+		}
 	}
 
 	FActorSpawnParameters SpawnParams;

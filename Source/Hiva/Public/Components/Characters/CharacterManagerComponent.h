@@ -34,6 +34,11 @@ private:
 	UPROPERTY()
 	int32 CurrentCharacterIndex = 0;
 
-	/** Realiza a lógica de spawn e possessão do novo personagem. */
 	void SpawnAndPossessCharacter(TSubclassOf<AHivaPlayerCharacter> CharacterClass);
+
+	UPROPERTY()
+	APawn* PreviousPawn;
+    
+	FVector PreviousLocation;
+	FRotator PreviousRotation;
 };

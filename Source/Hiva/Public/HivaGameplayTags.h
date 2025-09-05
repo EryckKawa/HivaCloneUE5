@@ -19,6 +19,8 @@ namespace HivaGameplayTags
 	HIVA_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Attack_Light_Gloves);
 	HIVA_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Attack_Heavy_Gloves);
 
+	/** Enemy tags **/
+	HIVA_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Weapon_Gloves);
 	
 	/** Test Event tags **/
 	HIVA_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Event_Test);
